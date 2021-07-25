@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>go-mod引入包 | 半斤</title>
+  
+    <link rel="icon" href="/assets/github.svg">
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/header.png)">
+        <div class='av-pic' style="background-image: url(/assets/tree_small.png)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>半斤</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1>go-mod引入包</h1>
+    </header>
+
+    <section>
+      <h2 id="使用go-mod引入包"><a href="#使用go-mod引入包" class="headerlink" title="使用go mod引入包"></a>使用go mod引入包</h2><p>此方式需要将你的GO111MODULE设置成on,这样你就可以在任意目录下面开启你的项目了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#随便找个目录下, 新建godemo</span><br><span class="line">mkdir godemo</span><br><span class="line">cd godemo</span><br><span class="line">#初始化go mod</span><br><span class="line">go mod init godemo</span><br></pre></td></tr></table></figure>
+
+<p>此时目录下就出现go.mod 文件，打开查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module godemo</span><br><span class="line"></span><br><span class="line">go 1.16</span><br></pre></td></tr></table></figure>
+
+<p>新建文件main.go, 在import中写入想要引用的包<br>我这里使用decimal包<br>decimal包地址：<a target="_blank" rel="noopener" href="https://pkg.go.dev/github.com/shopspring/decimal">https://pkg.go.dev/github.com/shopspring/decimal</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;github.com/shopspring/decimal&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	price, err := decimal.NewFromString(&quot;136.02&quot;)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		panic(err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	quantity := decimal.NewFromInt(3)</span><br><span class="line"></span><br><span class="line">	fee, _ := decimal.NewFromString(&quot;.035&quot;)</span><br><span class="line">	taxRate, _ := decimal.NewFromString(&quot;.08875&quot;)</span><br><span class="line"></span><br><span class="line">	subtotal := price.Mul(quantity)</span><br><span class="line"></span><br><span class="line">	preTax := subtotal.Mul(fee.Add(decimal.NewFromFloat(1)))</span><br><span class="line"></span><br><span class="line">	total := preTax.Mul(taxRate.Add(decimal.NewFromFloat(1)))</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;Subtotal:&quot;, subtotal)                      // Subtotal: 408.06</span><br><span class="line">	fmt.Println(&quot;Pre-tax:&quot;, preTax)                         // Pre-tax: 422.3421</span><br><span class="line">	fmt.Println(&quot;Taxes:&quot;, total.Sub(preTax))                // Taxes: 37.482861375</span><br><span class="line">	fmt.Println(&quot;Total:&quot;, total)                            // Total: 459.824961375</span><br><span class="line">	fmt.Println(&quot;Tax rate:&quot;, total.Sub(preTax).Div(preTax)) // Tax rate: 0.08875</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时运行go run main.go会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main.go:5:2: no required module provides package github.com/shopspring/decimal; to add it:</span><br><span class="line">	go get github.com/shopspring/decimal</span><br></pre></td></tr></table></figure>
+<p>提示使用  <code>go get github.com/shopspring/decimal</code> 命令，使用会显示下载完成<br>再运行就成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">go run main.go</span><br><span class="line"></span><br><span class="line">#输出</span><br><span class="line">Subtotal: 408.06</span><br><span class="line">Pre-tax: 422.3421</span><br><span class="line">Taxes: 37.482861375</span><br><span class="line">Total: 459.824961375</span><br><span class="line">Tax rate: 0.08875</span><br></pre></td></tr></table></figure>
+
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2021-07-25T05:19:37.000Z" itemprop="datePublished">
+              2021-07-25
+            </time>
+          </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2021 - 八两 </div>
+    <div>
+        <span>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a target="_blank" rel="noopener" href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+
+<script src="/js/pager/dist/singlepager.js"></script>
+
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
