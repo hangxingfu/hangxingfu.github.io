@@ -43,6 +43,10 @@
               <li>Tags</li>
             </a>  
           
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
         </ul>
     </section>
     <section class="media">
@@ -55,23 +59,26 @@
             <div>
   <article class='ContentView'>
     <header class='PageTitle'>
-        <h1>go-mod引入包</h1>
+        <h1><b>go-mod引入包</b></h1>
     </header>
 
     <section>
-      <h2 id="使用go-mod引入包"><a href="#使用go-mod引入包" class="headerlink" title="使用go mod引入包"></a>使用go mod引入包</h2><p>此方式需要将你的GO111MODULE设置成on,这样你就可以在任意目录下面开启你的项目了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#随便找个目录下, 新建godemo</span><br><span class="line">mkdir godemo</span><br><span class="line">cd godemo</span><br><span class="line">#初始化go mod</span><br><span class="line">go mod init godemo</span><br></pre></td></tr></table></figure>
+      <blockquote>
+<p>此方式需要将你的GO111MODULE设置成on,这样你就可以在任意目录下面开启你的项目了</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">随便找个目录下, 新建godemo</span></span><br><span class="line">mkdir godemo</span><br><span class="line">cd godemo</span><br><span class="line"><span class="meta">#</span><span class="bash">初始化go mod</span></span><br><span class="line">go mod init godemo</span><br></pre></td></tr></table></figure>
 
-<p>此时目录下就出现go.mod 文件，打开查看</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module godemo</span><br><span class="line"></span><br><span class="line">go 1.16</span><br></pre></td></tr></table></figure>
+<p>此时目录下就出现 <code>go.mod</code> 文件，打开查看</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">module godemo</span><br><span class="line"></span><br><span class="line"><span class="keyword">go</span> <span class="number">1.16</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p>新建文件<code>main.go</code>, 在import中写入想要引用的包<br>我这里使用decimal包<br>decimal包地址：<a target="_blank" rel="noopener" href="https://pkg.go.dev/github.com/shopspring/decimal">https://pkg.go.dev/github.com/shopspring/decimal</a></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;github.com/shopspring/decimal&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	price, err := decimal.NewFromString(<span class="string">&quot;136.02&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	quantity := decimal.NewFromInt(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">	fee, _ := decimal.NewFromString(<span class="string">&quot;.035&quot;</span>)</span><br><span class="line">	taxRate, _ := decimal.NewFromString(<span class="string">&quot;.08875&quot;</span>)</span><br><span class="line"></span><br><span class="line">	subtotal := price.Mul(quantity)</span><br><span class="line"></span><br><span class="line">	preTax := subtotal.Mul(fee.Add(decimal.NewFromFloat(<span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line">	total := preTax.Mul(taxRate.Add(decimal.NewFromFloat(<span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">&quot;Subtotal:&quot;</span>, subtotal)                      <span class="comment">// Subtotal: 408.06</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;Pre-tax:&quot;</span>, preTax)                         <span class="comment">// Pre-tax: 422.3421</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;Taxes:&quot;</span>, total.Sub(preTax))                <span class="comment">// Taxes: 37.482861375</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;Total:&quot;</span>, total)                            <span class="comment">// Total: 459.824961375</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;Tax rate:&quot;</span>, total.Sub(preTax).Div(preTax)) <span class="comment">// Tax rate: 0.08875</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>新建文件main.go, 在import中写入想要引用的包<br>我这里使用decimal包<br>decimal包地址：<a target="_blank" rel="noopener" href="https://pkg.go.dev/github.com/shopspring/decimal">https://pkg.go.dev/github.com/shopspring/decimal</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;github.com/shopspring/decimal&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	price, err := decimal.NewFromString(&quot;136.02&quot;)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		panic(err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	quantity := decimal.NewFromInt(3)</span><br><span class="line"></span><br><span class="line">	fee, _ := decimal.NewFromString(&quot;.035&quot;)</span><br><span class="line">	taxRate, _ := decimal.NewFromString(&quot;.08875&quot;)</span><br><span class="line"></span><br><span class="line">	subtotal := price.Mul(quantity)</span><br><span class="line"></span><br><span class="line">	preTax := subtotal.Mul(fee.Add(decimal.NewFromFloat(1)))</span><br><span class="line"></span><br><span class="line">	total := preTax.Mul(taxRate.Add(decimal.NewFromFloat(1)))</span><br><span class="line"></span><br><span class="line">	fmt.Println(&quot;Subtotal:&quot;, subtotal)                      // Subtotal: 408.06</span><br><span class="line">	fmt.Println(&quot;Pre-tax:&quot;, preTax)                         // Pre-tax: 422.3421</span><br><span class="line">	fmt.Println(&quot;Taxes:&quot;, total.Sub(preTax))                // Taxes: 37.482861375</span><br><span class="line">	fmt.Println(&quot;Total:&quot;, total)                            // Total: 459.824961375</span><br><span class="line">	fmt.Println(&quot;Tax rate:&quot;, total.Sub(preTax).Div(preTax)) // Tax rate: 0.08875</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<hr>
 <p>此时运行go run main.go会报错</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main.go:5:2: no required module provides package github.com/shopspring/decimal; to add it:</span><br><span class="line">	go get github.com/shopspring/decimal</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">main.<span class="keyword">go</span>:<span class="number">5</span>:<span class="number">2</span>: no required module provides <span class="keyword">package</span> github.com/shopspring/decimal; to add it:</span><br><span class="line">	<span class="keyword">go</span> get github.com/shopspring/decimal</span><br></pre></td></tr></table></figure>
 <p>提示使用  <code>go get github.com/shopspring/decimal</code> 命令，使用会显示下载完成<br>再运行就成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">go run main.go</span><br><span class="line"></span><br><span class="line">#输出</span><br><span class="line">Subtotal: 408.06</span><br><span class="line">Pre-tax: 422.3421</span><br><span class="line">Taxes: 37.482861375</span><br><span class="line">Total: 459.824961375</span><br><span class="line">Tax rate: 0.08875</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">go</span> run main.<span class="keyword">go</span></span><br><span class="line"></span><br><span class="line">#输出</span><br><span class="line">Subtotal: <span class="number">408.06</span></span><br><span class="line">Pre-tax: <span class="number">422.3421</span></span><br><span class="line">Taxes: <span class="number">37.482861375</span></span><br><span class="line">Total: <span class="number">459.824961375</span></span><br><span class="line">Tax rate: <span class="number">0.08875</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -112,7 +119,7 @@
     </div>
 </div>
 
-<script src="/js/pager/dist/singlepager.js"></script>
+<script src="/js/pager/singlepager.js"></script>
 
 <script>
 var sp = new Pager('data-pager-shell')
