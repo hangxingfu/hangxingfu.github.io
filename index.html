@@ -64,6 +64,64 @@
     <header class="title">
       
         <h1>
+          <a href="/2021/07/26/go%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">go依赖管理工具</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-07-26T02:05:54.000Z" itemprop="datePublished">
+    2021-07-26
+  </time>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h1 id="glide"><a href="#glide" class="headerlink" title="glide"></a>glide</h1><h3 id="go依赖包管理工具-glide"><a href="#go依赖包管理工具-glide" class="headerlink" title="go依赖包管理工具 glide"></a>go依赖包管理工具 glide</h3><p><a target="_blank" rel="noopener" href="https://glidedocs.readthedocs.io/zh/latest/">glide中文文档</a></p>
+<p>glide.yaml 完整配置示例</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">package:</span> <span class="string">foor</span></span><br><span class="line"><span class="attr">homepage:</span> <span class="string">https://github.com/qiangmzsx</span></span><br><span class="line"><span class="attr">license:</span> <span class="string">MIT</span></span><br><span class="line"><span class="attr">owners:</span> </span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">qiangmzsx</span></span><br><span class="line">  <span class="attr">email:</span> <span class="string">qiangmzsx@hotmail.com</span></span><br><span class="line">  <span class="attr">homepage:</span> <span class="string">https://github.com/qiangmzsx</span></span><br><span class="line"><span class="comment"># 去除包</span></span><br><span class="line"><span class="attr">ignore:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">appengine</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">golang.org/x/net</span></span><br><span class="line"><span class="comment"># 排除目录</span></span><br><span class="line"><span class="attr">excludeDirs:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">node_modules</span></span><br><span class="line"><span class="comment"># 导入包</span></span><br><span class="line"><span class="attr">import:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">package:</span> <span class="string">github.com/astaxie/beego</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">1.8</span><span class="number">.0</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">package:</span> <span class="string">github.com/coocood/freecache</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">package:</span> <span class="string">github.com/garyburd/redigo/redis</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">package:</span> <span class="string">github.com/go-sql-driver/mysql</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">package:</span> <span class="string">github.com/bitly/go-simplejson</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">package:</span> <span class="string">git.oschina.net/qiangmzsx/beegofreecache</span></span><br><span class="line"><span class="attr">testImport:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">package:</span> <span class="string">github.com/smartystreets/goconvey</span></span><br><span class="line">  <span class="attr">subpackages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">convey</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改yaml文件添加包， <code>glide up</code></li>
+<li>使用<code>glide get github.com/user/projiect</code>命令来添加依赖包</li>
+<li>当有glide.lock文件的时候可以使用 <code>glide install</code> 来安装依赖包</li>
+</ul>
+<hr>
+<h1 id="dep"><a href="#dep" class="headerlink" title="dep"></a>dep</h1><h3 id="Mac安装go依赖管理工具-dep"><a href="#Mac安装go依赖管理工具-dep" class="headerlink" title="Mac安装go依赖管理工具 dep"></a>Mac安装go依赖管理工具 dep</h3><blockquote>
+<p>go版本要&gt;=1.9<br>dep使用需要fanqiang</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">brew install dep</span><br></pre></td></tr></table></figure>
+
+<p>安装完成,dep命令输出</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Dep is a tool <span class="keyword">for</span> managing dependencies <span class="keyword">for</span> Go projects</span><br><span class="line"></span><br><span class="line">Usage: <span class="string">&quot;dep [command]&quot;</span></span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line"></span><br><span class="line">  init     Set up a new Go project, or migrate an existing one</span><br><span class="line">  status   Report the status of the project<span class="string">&#x27;s dependencies</span></span><br><span class="line"><span class="string">  ensure   Ensure a dependency is safely vendored in the project</span></span><br><span class="line"><span class="string">  version  Show the dep version information</span></span><br><span class="line"><span class="string">  check    Check if imports, Gopkg.toml, and Gopkg.lock are in sync</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Examples:</span></span><br><span class="line"><span class="string">  dep init                               set up a new project</span></span><br><span class="line"><span class="string">  dep ensure                             install the project&#x27;</span>s dependencies</span><br><span class="line">  dep ensure -update                     update the locked versions of all dependencies</span><br><span class="line">  dep ensure -add github.com/pkg/errors  add a dependency to the project</span><br><span class="line"></span><br><span class="line">Use <span class="string">&quot;dep help [command]&quot;</span> <span class="keyword">for</span> more information about a <span class="built_in">command</span>.</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用dep命令安装gin"><a href="#使用dep命令安装gin" class="headerlink" title="使用dep命令安装gin"></a>使用dep命令安装gin</h4><blockquote>
+<p>在 GOPATH/src 目录中使用 dep 命令</p>
+</blockquote>
+<p>新建任意目录，并在里面 dep init，成功后会生成两个文件（Gopkg.lock Gopkg.toml）和一个目录（vendor）</p>
+<p><img src="https://gss0.baidu.com/9rkZbzqaKgQUohGko9WTAnF6hhy/mms-res/voice/choujiang/28968009-f49a4a6a-78eb-11e7-93cf-e695d45488da.14d8c0f3.png" alt="relation"></p>
+<ul>
+<li>vendor 依赖包会下载到这里</li>
+<li>Gopkg.lock 暂时不用管</li>
+<li>Gopkg.toml 需要的依赖配置写在这里</li>
+</ul>
+<p>在 toml 文件中增加依赖配置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line">[[<span class="string">constraint</span>]]</span><br><span class="line">  <span class="string">name</span> <span class="string">=</span> <span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">  <span class="string">version</span> <span class="string">=</span> <span class="string">&quot;1.4.0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>之后执行 dep ensure 命令，会在vendor下安装包</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
           <a href="/2021/07/25/go-mod%E5%BC%95%E5%85%A5%E5%8C%85/">go-mod引入包</a>
         </h1>
       
