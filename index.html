@@ -64,6 +64,172 @@
     <header class="title">
       
         <h1>
+          <a href="/2021/10/10/BOOKS-NOTE/">BOOKS NOTE</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-10-10T07:40:16.000Z" itemprop="datePublished">
+    2021-10-10
+  </time>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h1 id="BOOKS-NOTE"><a href="#BOOKS-NOTE" class="headerlink" title="BOOKS NOTE"></a>BOOKS NOTE</h1><hr>
+
+<h3 id="《双子星》"><a href="#《双子星》" class="headerlink" title="《双子星》"></a>《双子星》</h3><pre><code>        -- 伊坂幸太郎【日】 著
+</code></pre>
+<blockquote>
+<p>&ensp;&ensp;&ensp;&ensp;大婶缓缓转过头来，深深叹了口气：“优我，你脑子好使，肯定也知道借钱本身根本不是问题。我想说的是，谈钱需要相应的觉悟，它有可能破坏我跟你们之间的关系。你们明白这一点，却还想找我借钱，这让我心里不是滋味呀。借钱倒是没什么。”<br>&ensp;&ensp;&ensp;&ensp;我和风我深深地低下了头。<br>&ensp;&ensp;&ensp;&ensp;再多得辩解和歉意都没有意义了。<br>&ensp;&ensp;&ensp;&ensp;或许我们和大婶的关系会因此生隙，但总有一天裂痕会修复，我们会弥补她的。<br>&ensp;&ensp;&ensp;&ensp;我认为这样，风我肯定也一样。<br>&ensp;&ensp;&ensp;&ensp;最终借了两百万日元。<br>&ensp;&ensp;&ensp;&ensp;摞起来也没有多厚，甚至有些叫人失望。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 🐘  我也会这么觉得。&lt; 2021-10-10 16:01 &gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2021/10/07/laravel%E4%BD%BF%E7%94%A8Casbin%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BARBAC/">laravel使用Casbin快速搭建RBAC</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-10-07T08:46:27.000Z" itemprop="datePublished">
+    2021-10-07
+  </time>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h1 id="laravel使用Casbin快速搭建RBAC"><a href="#laravel使用Casbin快速搭建RBAC" class="headerlink" title="laravel使用Casbin快速搭建RBAC"></a>laravel使用Casbin快速搭建RBAC</h1><p>github地址：<a target="_blank" rel="noopener" href="https://github.com/php-casbin/laravel-authz">https://github.com/php-casbin/laravel-authz</a></p>
+<p>laravel 项目安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">composer require casbin/laravel-authz</span><br></pre></td></tr></table></figure>
+<p>添加服务提供者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// config/app.php</span><br><span class="line">&#x27;providers&#x27; =&gt; [</span><br><span class="line">    /*</span><br><span class="line">     * Package Service Providers...</span><br><span class="line">     */</span><br><span class="line">    Lauthz\LauthzServiceProvider::class,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&#x27;aliases&#x27; =&gt; [</span><br><span class="line">    // ...</span><br><span class="line">    &#x27;Enforcer&#x27; =&gt; Lauthz\Facades\Enforcer::class,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>发布</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php artisan vendor:publish</span><br><span class="line"></span><br><span class="line">// 弹出选项</span><br><span class="line">Which provider or tag&#x27;s files would you like to publish?:</span><br><span class="line">  [0 ] Publish files from all providers and tags listed below</span><br><span class="line">  [1 ] Provider: BeyondCode\DumpServer\DumpServerServiceProvider</span><br><span class="line">  [2 ] Provider: Fideloper\Proxy\TrustedProxyServiceProvider</span><br><span class="line">  [3 ] Provider: Illuminate\Foundation\Providers\FoundationServiceProvider</span><br><span class="line">  [4 ] Provider: Illuminate\Mail\MailServiceProvider</span><br><span class="line">  [5 ] Provider: Illuminate\Notifications\NotificationServiceProvider</span><br><span class="line">  [6 ] Provider: Illuminate\Pagination\PaginationServiceProvider</span><br><span class="line">  [7 ] Provider: Laravel\Tinker\TinkerServiceProvider</span><br><span class="line">  [8 ] Provider: Lauthz\LauthzServiceProvider</span><br><span class="line">  [9 ] Provider: Tymon\JWTAuth\Providers\LaravelServiceProvider</span><br><span class="line">  [10] Tag: config</span><br><span class="line">  [11] Tag: laravel-errors</span><br><span class="line">  [12] Tag: laravel-lauthz-config</span><br><span class="line">  [13] Tag: laravel-lauthz-migrations</span><br><span class="line">  [14] Tag: laravel-mail</span><br><span class="line">  [15] Tag: laravel-notifications</span><br><span class="line">  [16] Tag: laravel-pagination</span><br><span class="line"> &gt; 12</span><br><span class="line"></span><br><span class="line">// 输入12，生成配置</span><br><span class="line">Copied File [/vendor/casbin/laravel-authz/config/lauthz-rbac-model.conf] To [/config/lauthz-rbac-model.conf]</span><br><span class="line">Copied File [/vendor/casbin/laravel-authz/config/lauthz.php] To [/config/lauthz.php]</span><br><span class="line">Publishing complete.</span><br><span class="line"></span><br><span class="line">// 再次操作，输入13，生成迁移数据文件</span><br><span class="line">Copied Directory [/vendor/casbin/laravel-authz/database/migrations] To [/database/migrations]</span><br><span class="line">Publishing complete.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>迁移数据创建一个名为 rules 的新表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
+
+<h4 id="用法-Enforcer-Api"><a href="#用法-Enforcer-Api" class="headerlink" title="用法 Enforcer Api"></a>用法 Enforcer Api</h4><p>获取所有角色</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Enforcer::getAllRoles(); // [&#x27;writer&#x27;, &#x27;reader&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>获取用户拥有的角色</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Enforcer::getRolesForUser(&#x27;eve&#x27;); // [&#x27;writer&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2021/10/04/laravel-api-init/">laravel-api-init</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-10-04T02:51:46.000Z" itemprop="datePublished">
+    2021-10-04
+  </time>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h1 id="Laravel-api-init"><a href="#Laravel-api-init" class="headerlink" title="Laravel-api-init"></a>Laravel-api-init</h1><blockquote>
+<p>使用auth-jwt，安装 <a target="_blank" rel="noopener" href="https://jwt-auth.readthedocs.io/en/develop/laravel-installation/">https://jwt-auth.readthedocs.io/en/develop/laravel-installation/</a></p>
+</blockquote>
+<p>请求me接口时报错,重定向到login路由时找不到（因为只做api,路由找的是web的登录页），可以重写路由，提示权限验证有误。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># App\Http\Middleware\Authenticate</span><br><span class="line">protected function redirectTo($request)</span><br><span class="line">&#123;</span><br><span class="line">    if (!$request-&gt;expectsJson()) &#123;</span><br><span class="line">        return route(&#x27;re-login&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># router这样写</span><br><span class="line">Route::get(&#x27;re-login&#x27;,&#x27;APi\UserController@re_login&#x27;)-&gt;name(&#x27;re-login&#x27;); //校验失败，重新登录</span><br><span class="line"></span><br><span class="line"># 提示方法</span><br><span class="line">public function re_login()</span><br><span class="line">&#123;</span><br><span class="line">    return response()-&gt;json([&#x27;msg&#x27; =&gt; &#x27;验证过期或有误，请重新登录&#x27;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>测试工具使用Apifox <a target="_blank" rel="noopener" href="https://www.apifox.cn/help/#%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%8E%B0%E7%8A%B6">https://www.apifox.cn/help/#%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%8E%B0%E7%8A%B6</a> , 用postman也是一样的</p>
+</blockquote>
+<h4 id="OAuth2-0"><a href="#OAuth2-0" class="headerlink" title="OAuth2.0"></a>OAuth2.0</h4><ul>
+<li>授权码<br>  第三方应用先获取授权码，再用授权码去获取令牌。</li>
+<li>隐藏式<br>  没有后端的纯前端项目，直接请求获取令牌，令牌发送是以锚点的方式带过来的，因为http协议可能遭到中间人攻击。</li>
+<li>密码式<br>  高度信任某个应用，直接要求用户提供账户密码，拿到帐密后就直接请求令牌。</li>
+<li>凭证式<br>  适用于没有前端的命令行应用。直接拿凭证请求，验证通过后立即返回令牌。这种方式给出的令牌，是针对第三方应用的，而不是针对用户的，即有可能多个用户共享同一个令牌。</li>
+</ul>
+<h3 id="Laravel-Api表单验证失败被重定向到主页"><a href="#Laravel-Api表单验证失败被重定向到主页" class="headerlink" title="Laravel Api表单验证失败被重定向到主页"></a>Laravel Api表单验证失败被重定向到主页</h3><p>查看fromrequest源码，有一个方法failedValidation，失败后会重定向到指定路由。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line">* Handle a failed validation attempt.</span><br><span class="line">*</span><br><span class="line">* @param  \Illuminate\Contracts\Validation\Validator  $validator</span><br><span class="line">* @return void</span><br><span class="line">*</span><br><span class="line">* @throws \Illuminate\Validation\ValidationException</span><br><span class="line">*/</span><br><span class="line">protected function failedValidation(Validator $validator)</span><br><span class="line">&#123;</span><br><span class="line">    throw (new ValidationException($validator))</span><br><span class="line">                -&gt;errorBag($this-&gt;errorBag)</span><br><span class="line">                -&gt;redirectTo($this-&gt;getRedirectUrl());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以把它重写成返回指定的json串。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">protected function failedValidation(Validator $validator)</span><br><span class="line">&#123;</span><br><span class="line">    $validator = new ValidationException($validator);</span><br><span class="line">    throw new HttpResponseException(response()-&gt;json([</span><br><span class="line">        &#x27;message&#x27; =&gt; $validator-&gt;getMessage(),</span><br><span class="line">        &#x27;error&#x27; =&gt; $validator-&gt;errors()</span><br><span class="line">    ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    // 重写验证失败 返回错误信息（本来是跳转指定路由</span><br><span class="line">    protected function failedValidation(Validator $validator)</span><br><span class="line">    &#123;</span><br><span class="line">        // 422 Unprocessable Entity 请求格式正确，但是由于含有语义错误，无法响应。</span><br><span class="line">        $validator = new ValidationException($validator);</span><br><span class="line">//        throw new HttpResponseException(response()-&gt;json([</span><br><span class="line">//            &#x27;message&#x27; =&gt; $validator-&gt;getMessage(),</span><br><span class="line">//            &#x27;error&#x27; =&gt; $validator-&gt;errors()</span><br><span class="line">//        ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY));</span><br><span class="line">        $message = array_values(array_map(&#x27;reset&#x27;, objToArr($validator-&gt;errors())))[0] ?? $validator-&gt;getMessage();</span><br><span class="line">        $response_arr = $this-&gt;failed($message, $validator-&gt;status);</span><br><span class="line">        throw new HttpResponseException($response_arr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Laravel-添加公共函数"><a href="#Laravel-添加公共函数" class="headerlink" title="Laravel 添加公共函数"></a>Laravel 添加公共函数</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/crazytata/p/10135841.html">https://www.cnblogs.com/crazytata/p/10135841.html</a></p>
+</blockquote>
+<h4 id="Laravel-对象转数组"><a href="#Laravel-对象转数组" class="headerlink" title="Laravel 对象转数组"></a>Laravel 对象转数组</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">toArray() 之后</span><br><span class="line">array_map (&#x27;get_object_vars&#x27;, $results); </span><br><span class="line">// or</span><br><span class="line">json_decode(json_encode($array,true),true)</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取一组数组数据的头或结尾列"><a href="#获取一组数组数据的头或结尾列" class="headerlink" title="获取一组数组数据的头或结尾列"></a>获取一组数组数据的头或结尾列</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$arr2 = array_map(&#x27;reset&#x27;,$arr);</span><br><span class="line">$arr2 = array_map(&#x27;end&#x27;,$arr);</span><br></pre></td></tr></table></figure>
+<h4 id="Laravel-api-访问频率限制-429-Too-many-requests"><a href="#Laravel-api-访问频率限制-429-Too-many-requests" class="headerlink" title="Laravel api 访问频率限制 429 Too many requests"></a>Laravel api 访问频率限制 429 Too many requests</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 配置在 Laravel 项目文件 app/Http/Kernel.php</span><br><span class="line">&#x27;api&#x27; =&gt; [</span><br><span class="line">    &#x27;throttle:60,1&#x27;,</span><br><span class="line">    &#x27;bindings&#x27;,·</span><br><span class="line">],</span><br><span class="line">/*</span><br><span class="line">第一个参数 60 代表每分钟限制 60 次请求</span><br><span class="line">第二个参数 1 代表触发了限制规则，则1分钟内禁止访问</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决并发请求-token-失效的问题·······"><a href="#解决并发请求-token-失效的问题·······" class="headerlink" title="解决并发请求 token 失效的问题·······"></a>解决并发请求 token 失效的问题·······</h4><blockquote>
+<p>配置 blacklist_grace_period 参数，允许过期 token 在一定时间内访问·</p>
+</blockquote>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
+          <a href="/2021/08/13/go%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0/">go报错原因</a>
+        </h1>
+      
+      <div class='ListMeta'>
+  <time datetime="2021-08-13T08:26:51.000Z" itemprop="datePublished">
+    2021-08-13
+  </time>
+  
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="go报错原因"><a href="#go报错原因" class="headerlink" title="go报错原因"></a>go报错原因</h2><ul>
+<li><p><code>no result values expected</code><br>  函数没有写返回值，却进行了return</p>
+</li>
+<li><p><code>undeclared name: xx</code><br>  为定义的变量名，注意定义时的 : 有没有写</p>
+</li>
+</ul>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class='ListView'>
+    <header class="title">
+      
+        <h1>
           <a href="/2021/08/04/go%E5%88%87%E7%89%87%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/">go切片需要注意的地方</a>
         </h1>
       
@@ -303,136 +469,13 @@
 
     </li>
   
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2021/06/26/test-update-message/">brew 安装 PHP 环境</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2021-06-25T16:45:43.000Z" itemprop="datePublished">
-    2021-06-26
-  </time>
-  
-  
-  / 
-  <ul>
-    
-  <li class="meta-text">
-  { <a href="/categories/favorite/">favorite</a> }
-  </li>
-
-
-  </ul>
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h2 id="安装brew"><a href="#安装brew" class="headerlink" title="安装brew"></a>安装brew</h2><p><a target="_blank" rel="noopener" href="https://brew.sh/index_zh-cn">brew中文地址</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/90765541">brew常用命令</a></p>
-<ul>
-<li>brew 安装\卸载软件<br><code>brew install\uninstall XXX</code></li>
-<li>brew 查看已安装的软件列表<br><code>brew list</code></li>
-<li>brew 查看软件的安装信息<br><code>brew info XXX</code></li>
-<li>brew 查看service列表状态<br><code>brew services list</code></li>
-</ul>
-<h2 id="brew安装nginx"><a href="#brew安装nginx" class="headerlink" title="brew安装nginx"></a>brew安装nginx</h2><p><code>brew search nginx</code><br><code>brew install nginx</code></p>
-<ul>
-<li>启动nginx<br><code>nginx</code><br>  启动后访问nginx <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a></li>
-<li>关闭nginx服务<br><code>nginx -s stop</code></li>
-<li>nginx重启<br><code>nginx -s reload</code></li>
-<li>查看nginx版本<br><code>nginx -v</code></li>
-<li>nginx.conf修改<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 可以把listen端口改为80</span><br><span class="line">listen       80;</span><br><span class="line"># 解开这个注释</span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">    #root           html;</span><br><span class="line">    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    fastcgi_index  index.php;</span><br><span class="line">    #fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span><br><span class="line">    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line"></span><br><span class="line">    include        fastcgi_params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>多站点配置<br>新建sites目录，*.conf都在这里<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># nginx.conf倒数第二行</span><br><span class="line">include sites/*.conf</span><br><span class="line"></span><br><span class="line"># *.conf 模板</span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  XXXX.com;</span><br><span class="line">    root         /Users/XXXX/wwwroot/blog/public;</span><br><span class="line">    index  index.html index.htm index.php;</span><br><span class="line">    add_header Access-Control-Allow-Origin *;</span><br><span class="line">    add_header Access-Control-Allow-Credentials &quot;true&quot;;</span><br><span class="line">    add_header Access-Control-Allow-Methods &quot;GET,POST&quot;;</span><br><span class="line">    add_header Access-Control-Allow-Headers &quot;Origin,No-Cache,X-Requested-With,If-Modified-Since,Pragma,Last-Modified,Cache-Control,Expires,Content-Type,X-E4M-With&quot;;</span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.php?$query_string;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">          fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">          fastcgi_index  index.php;</span><br><span class="line">          fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">          include        fastcgi_params;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="brew安装php"><a href="#brew安装php" class="headerlink" title="brew安装php"></a>brew安装php</h3><p><code>brew search php</code><br><code>brew install php@7.3</code></p>
-<ul>
-<li>安装PHP扩展<br>使用pecl安装<ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/113042273">pecl安装教程</a><br>tips: 此处若安装好命令不能用可能需要设置环境变量</li>
-<li>编译安装<br>下载源码包；phpize；.configure；make &amp;&amp; make install；在php.ini文件中添加扩展配置，重启php-fpm</li>
-</ul>
-</li>
-<li>切换PHP版本</li>
-</ul>
-<h3 id="brew安装mysql"><a href="#brew安装mysql" class="headerlink" title="brew安装mysql"></a>brew安装mysql</h3><p><code>brew search php</code><br><code>brew install php@7.3</code></p>
-<ul>
-<li>安装完毕后设置数据库密码<br><code>mysql_secure_installation</code></li>
-<li>开启msyql服务<br><code>mysql.server start</code></li>
-<li>重启mysql服务<br><code>mysql.server restart</code></li>
-<li>关闭mysql服务<br><code>mysql.server stop</code></li>
 </ul>
 
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-        <h1>
-          <a href="/2021/06/25/hello-world/">Hello World</a>
-        </h1>
-      
-      <div class='ListMeta'>
-  <time datetime="2021-06-25T15:23:50.743Z" itemprop="datePublished">
-    2021-06-25
-  </time>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-</article>
-
-    </li>
-  
-    <li>
-      <article class='ListView'>
-    <header class="title">
-      
-      <div class='ListMeta'>
-  <time datetime="2021-06-25T15:18:48.494Z" itemprop="datePublished">
-    2021-06-25
-  </time>
-  
-  
-</div>
-
-    </header>
-    <div>
-      
-        <h1 id="hangxingfu-github-io"><a href="#hangxingfu-github-io" class="headerlink" title="hangxingfu.github.io"></a>hangxingfu.github.io</h1>
-      
-    </div>
-</article>
-
-    </li>
-  
-</ul>
+  <section id="nav-wrapper">
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">next »</a>
+    </nav>
+  </section>
 
 
             <footer>

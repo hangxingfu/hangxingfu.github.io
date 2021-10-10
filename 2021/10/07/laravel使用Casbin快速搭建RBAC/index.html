@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>laravel使用Casbin快速搭建RBAC | 半斤</title>
+  
+    <link rel="icon" href="/assets/github.svg">
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+<div class="Shell">
+    <aside class='SideBar'>
+    <section class='avatar' style="background-image: url(/assets/header.png)">
+        <div class='av-pic' style="background-image: url(/assets/tree_small.png)">
+        </div>
+    </section>
+    <section class='menu'>
+        <div>半斤</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+            <a href="/tags/" class="Btn">
+              <li>Tags</li>
+            </a>  
+          
+            <a href="/about/" class="Btn">
+              <li>About</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class='ContentView'>
+    <header class='PageTitle'>
+        <h1><b>laravel使用Casbin快速搭建RBAC</b></h1>
+    </header>
+
+    <section>
+      <h1 id="laravel使用Casbin快速搭建RBAC"><a href="#laravel使用Casbin快速搭建RBAC" class="headerlink" title="laravel使用Casbin快速搭建RBAC"></a>laravel使用Casbin快速搭建RBAC</h1><p>github地址：<a target="_blank" rel="noopener" href="https://github.com/php-casbin/laravel-authz">https://github.com/php-casbin/laravel-authz</a></p>
+<p>laravel 项目安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">composer require casbin/laravel-authz</span><br></pre></td></tr></table></figure>
+<p>添加服务提供者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// config/app.php</span><br><span class="line">&#x27;providers&#x27; =&gt; [</span><br><span class="line">    /*</span><br><span class="line">     * Package Service Providers...</span><br><span class="line">     */</span><br><span class="line">    Lauthz\LauthzServiceProvider::class,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&#x27;aliases&#x27; =&gt; [</span><br><span class="line">    // ...</span><br><span class="line">    &#x27;Enforcer&#x27; =&gt; Lauthz\Facades\Enforcer::class,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>发布</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php artisan vendor:publish</span><br><span class="line"></span><br><span class="line">// 弹出选项</span><br><span class="line">Which provider or tag&#x27;s files would you like to publish?:</span><br><span class="line">  [0 ] Publish files from all providers and tags listed below</span><br><span class="line">  [1 ] Provider: BeyondCode\DumpServer\DumpServerServiceProvider</span><br><span class="line">  [2 ] Provider: Fideloper\Proxy\TrustedProxyServiceProvider</span><br><span class="line">  [3 ] Provider: Illuminate\Foundation\Providers\FoundationServiceProvider</span><br><span class="line">  [4 ] Provider: Illuminate\Mail\MailServiceProvider</span><br><span class="line">  [5 ] Provider: Illuminate\Notifications\NotificationServiceProvider</span><br><span class="line">  [6 ] Provider: Illuminate\Pagination\PaginationServiceProvider</span><br><span class="line">  [7 ] Provider: Laravel\Tinker\TinkerServiceProvider</span><br><span class="line">  [8 ] Provider: Lauthz\LauthzServiceProvider</span><br><span class="line">  [9 ] Provider: Tymon\JWTAuth\Providers\LaravelServiceProvider</span><br><span class="line">  [10] Tag: config</span><br><span class="line">  [11] Tag: laravel-errors</span><br><span class="line">  [12] Tag: laravel-lauthz-config</span><br><span class="line">  [13] Tag: laravel-lauthz-migrations</span><br><span class="line">  [14] Tag: laravel-mail</span><br><span class="line">  [15] Tag: laravel-notifications</span><br><span class="line">  [16] Tag: laravel-pagination</span><br><span class="line"> &gt; 12</span><br><span class="line"></span><br><span class="line">// 输入12，生成配置</span><br><span class="line">Copied File [/vendor/casbin/laravel-authz/config/lauthz-rbac-model.conf] To [/config/lauthz-rbac-model.conf]</span><br><span class="line">Copied File [/vendor/casbin/laravel-authz/config/lauthz.php] To [/config/lauthz.php]</span><br><span class="line">Publishing complete.</span><br><span class="line"></span><br><span class="line">// 再次操作，输入13，生成迁移数据文件</span><br><span class="line">Copied Directory [/vendor/casbin/laravel-authz/database/migrations] To [/database/migrations]</span><br><span class="line">Publishing complete.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>迁移数据创建一个名为 rules 的新表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php artisan migrate</span><br></pre></td></tr></table></figure>
+
+<h4 id="用法-Enforcer-Api"><a href="#用法-Enforcer-Api" class="headerlink" title="用法 Enforcer Api"></a>用法 Enforcer Api</h4><p>获取所有角色</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Enforcer::getAllRoles(); // [&#x27;writer&#x27;, &#x27;reader&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>获取用户拥有的角色</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Enforcer::getRolesForUser(&#x27;eve&#x27;); // [&#x27;writer&#x27;]</span><br></pre></td></tr></table></figure>
+
+
+
+      
+
+    </section>
+    
+      <section class='ArticleMeta'>
+          <div>
+            发布于&nbsp;
+            <time datetime="2021-10-07T08:46:27.000Z" itemprop="datePublished">
+              2021-10-07
+            </time>
+          </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2021 - 八两 </div>
+    <div>
+        <span>
+            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a target="_blank" rel="noopener" href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+
+<script src="/js/pager/singlepager.js"></script>
+
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
