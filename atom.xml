@@ -3,11 +3,11 @@
   <title>hxf 日常</title>
   <icon>https://www.gravatar.com/avatar/a31cdef814535e9779636d5934eb4d63</icon>
   <subtitle>Stay hungry, stay foolish.</subtitle>
-  <link href="http://localhost:4000/atom.xml" rel="self"/>
+  <link href="https://hangxingfu.github.io/atom.xml" rel="self"/>
   
-  <link href="http://localhost:4000/"/>
+  <link href="https://hangxingfu.github.io/"/>
   <updated>2023-03-18T09:16:44.438Z</updated>
-  <id>http://localhost:4000/</id>
+  <id>https://hangxingfu.github.io/</id>
   
   <author>
     <name>hangxingfu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>文章摘抄</title>
-    <link href="http://localhost:4000/2021/10/10/BOOKS-NOTE/"/>
-    <id>http://localhost:4000/2021/10/10/BOOKS-NOTE/</id>
+    <link href="https://hangxingfu.github.io/2021/10/10/BOOKS-NOTE/"/>
+    <id>https://hangxingfu.github.io/2021/10/10/BOOKS-NOTE/</id>
     <published>2021-10-10T07:40:16.000Z</published>
     <updated>2023-03-18T09:16:44.438Z</updated>
     
@@ -34,17 +34,17 @@
     
     
     
-    <category term="文字" scheme="http://localhost:4000/categories/%E6%96%87%E5%AD%97/"/>
+    <category term="文字" scheme="https://hangxingfu.github.io/categories/%E6%96%87%E5%AD%97/"/>
     
     
-    <category term="摘抄" scheme="http://localhost:4000/tags/%E6%91%98%E6%8A%84/"/>
+    <category term="摘抄" scheme="https://hangxingfu.github.io/tags/%E6%91%98%E6%8A%84/"/>
     
   </entry>
   
   <entry>
     <title>go报错原因</title>
-    <link href="http://localhost:4000/2021/08/13/go%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0/"/>
-    <id>http://localhost:4000/2021/08/13/go%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0/</id>
+    <link href="https://hangxingfu.github.io/2021/08/13/go%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0/"/>
+    <id>https://hangxingfu.github.io/2021/08/13/go%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0/</id>
     <published>2021-08-13T08:26:51.000Z</published>
     <updated>2023-03-18T09:17:38.975Z</updated>
     
@@ -60,14 +60,14 @@
     
     
     
-    <category term="go" scheme="http://localhost:4000/tags/go/"/>
+    <category term="go" scheme="https://hangxingfu.github.io/tags/go/"/>
     
   </entry>
   
   <entry>
     <title>go切片需要注意的地方</title>
-    <link href="http://localhost:4000/2021/08/04/go%E5%88%87%E7%89%87%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/"/>
-    <id>http://localhost:4000/2021/08/04/go%E5%88%87%E7%89%87%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/</id>
+    <link href="https://hangxingfu.github.io/2021/08/04/go%E5%88%87%E7%89%87%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/"/>
+    <id>https://hangxingfu.github.io/2021/08/04/go%E5%88%87%E7%89%87%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/</id>
     <published>2021-08-04T02:55:22.000Z</published>
     <updated>2023-03-18T09:17:38.909Z</updated>
     
@@ -83,14 +83,14 @@
     
     
     
-    <category term="go" scheme="http://localhost:4000/tags/go/"/>
+    <category term="go" scheme="https://hangxingfu.github.io/tags/go/"/>
     
   </entry>
   
   <entry>
     <title>go两个数值交换</title>
-    <link href="http://localhost:4000/2021/08/04/go%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%80%BC%E4%BA%A4%E6%8D%A2/"/>
-    <id>http://localhost:4000/2021/08/04/go%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%80%BC%E4%BA%A4%E6%8D%A2/</id>
+    <link href="https://hangxingfu.github.io/2021/08/04/go%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%80%BC%E4%BA%A4%E6%8D%A2/"/>
+    <id>https://hangxingfu.github.io/2021/08/04/go%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%80%BC%E4%BA%A4%E6%8D%A2/</id>
     <published>2021-08-03T16:10:10.000Z</published>
     <updated>2023-03-18T09:17:38.909Z</updated>
     
@@ -106,14 +106,14 @@
     
     
     
-    <category term="go" scheme="http://localhost:4000/tags/go/"/>
+    <category term="go" scheme="https://hangxingfu.github.io/tags/go/"/>
     
   </entry>
   
   <entry>
     <title>git克隆rpc failed</title>
-    <link href="http://localhost:4000/2021/07/27/failed/"/>
-    <id>http://localhost:4000/2021/07/27/failed/</id>
+    <link href="https://hangxingfu.github.io/2021/07/27/failed/"/>
+    <id>https://hangxingfu.github.io/2021/07/27/failed/</id>
     <published>2021-07-27T05:06:05.000Z</published>
     <updated>2023-03-18T09:17:38.975Z</updated>
     
@@ -128,14 +128,14 @@
     
     
     
-    <category term="Git" scheme="http://localhost:4000/tags/Git/"/>
+    <category term="Git" scheme="https://hangxingfu.github.io/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>go依赖管理工具</title>
-    <link href="http://localhost:4000/2021/07/26/go%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
-    <id>http://localhost:4000/2021/07/26/go%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</id>
+    <link href="https://hangxingfu.github.io/2021/07/26/go%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"/>
+    <id>https://hangxingfu.github.io/2021/07/26/go%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</id>
     <published>2021-07-26T02:05:54.000Z</published>
     <updated>2023-03-18T09:17:38.842Z</updated>
     
@@ -150,14 +150,14 @@
     
     
     
-    <category term="go" scheme="http://localhost:4000/tags/go/"/>
+    <category term="go" scheme="https://hangxingfu.github.io/tags/go/"/>
     
   </entry>
   
   <entry>
     <title>go-mod引入包</title>
-    <link href="http://localhost:4000/2021/07/25/go-mod%E5%BC%95%E5%85%A5%E5%8C%85/"/>
-    <id>http://localhost:4000/2021/07/25/go-mod%E5%BC%95%E5%85%A5%E5%8C%85/</id>
+    <link href="https://hangxingfu.github.io/2021/07/25/go-mod%E5%BC%95%E5%85%A5%E5%8C%85/"/>
+    <id>https://hangxingfu.github.io/2021/07/25/go-mod%E5%BC%95%E5%85%A5%E5%8C%85/</id>
     <published>2021-07-25T05:19:37.000Z</published>
     <updated>2023-03-18T09:17:38.974Z</updated>
     
@@ -175,14 +175,14 @@
     
     
     
-    <category term="go" scheme="http://localhost:4000/tags/go/"/>
+    <category term="go" scheme="https://hangxingfu.github.io/tags/go/"/>
     
   </entry>
   
   <entry>
     <title>go环境搭建（Mac）</title>
-    <link href="http://localhost:4000/2021/07/01/go-study/"/>
-    <id>http://localhost:4000/2021/07/01/go-study/</id>
+    <link href="https://hangxingfu.github.io/2021/07/01/go-study/"/>
+    <id>https://hangxingfu.github.io/2021/07/01/go-study/</id>
     <published>2021-06-30T16:22:33.000Z</published>
     <updated>2023-03-18T09:17:38.974Z</updated>
     
@@ -198,14 +198,14 @@
     
     
     
-    <category term="go" scheme="http://localhost:4000/tags/go/"/>
+    <category term="go" scheme="https://hangxingfu.github.io/tags/go/"/>
     
   </entry>
   
   <entry>
     <title>brew 安装 PHP 环境</title>
-    <link href="http://localhost:4000/2021/06/26/brew%E5%AE%89%E8%A3%85PHP%E7%8E%AF%E5%A2%83/"/>
-    <id>http://localhost:4000/2021/06/26/brew%E5%AE%89%E8%A3%85PHP%E7%8E%AF%E5%A2%83/</id>
+    <link href="https://hangxingfu.github.io/2021/06/26/brew%E5%AE%89%E8%A3%85PHP%E7%8E%AF%E5%A2%83/"/>
+    <id>https://hangxingfu.github.io/2021/06/26/brew%E5%AE%89%E8%A3%85PHP%E7%8E%AF%E5%A2%83/</id>
     <published>2021-06-25T16:45:43.000Z</published>
     <updated>2023-03-18T09:16:25.634Z</updated>
     
@@ -219,30 +219,10 @@
     
     
     
-    <category term="favorite" scheme="http://localhost:4000/categories/favorite/"/>
+    <category term="favorite" scheme="https://hangxingfu.github.io/categories/favorite/"/>
     
     
-    <category term="PHP" scheme="http://localhost:4000/tags/PHP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://localhost:4000/2021/06/25/README/"/>
-    <id>http://localhost:4000/2021/06/25/README/</id>
-    <published>2021-06-25T15:18:48.494Z</published>
-    <updated>2021-06-25T15:18:48.494Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="hangxingfu-github-io"><a href="#hangxingfu-github-io" class="headerlink" title="hangxingfu.github.io"></a>hangxingfu.github.io</h1>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;hangxingfu-github-io&quot;&gt;&lt;a href=&quot;#hangxingfu-github-io&quot; class=&quot;headerlink&quot; title=&quot;hangxingfu.github.io&quot;&gt;&lt;/a&gt;hangxingfu.github.io&lt;/h1&gt;</summary>
-      
-    
-    
-    
+    <category term="PHP" scheme="https://hangxingfu.github.io/tags/PHP/"/>
     
   </entry>
   
