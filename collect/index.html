@@ -12,7 +12,7 @@
 
     <title>
         
-        go两个数值交换 - hxf 日常
+        Collect - hxf 日常
         
     </title>
 
@@ -83,7 +83,7 @@
                     <span>存档</span>
                 </a>
             </li>
-            <li >
+            <li  class=active >
                 <a href="/collect/">
                     <i class="iconfont icon-shoucang1"></i>
                     <span>收藏</span>
@@ -105,10 +105,6 @@
             
         </ul>
     </div>
-    
-        <div id="toc" class="toc-article">
-    
-</div>
     
 </div>
 
@@ -135,45 +131,23 @@
     <div class="index-middle">
         <!-- Main Content -->
         
+<div class="post-content no-indent">
+  <h3 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.haomwei.com/">屠城</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://prowiki.wujiaxing.cn/">HackTheWorld</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://prowiki.wujiaxing.cn/">HackTheWorld</a></p>
+</li>
+</ul>
+<h3 id="有趣的网站"><a href="#有趣的网站" class="headerlink" title="有趣的网站"></a>有趣的网站</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://flexboxfroggy.com/#zh-cn">FlexboxFroggy</a></li>
+</ul>
 
-
-<div class="post-container">
-    <div class="post-title">
-        go两个数值交换
-    </div>
-
-    <div class="post-meta">
-        <span class="attr">发布于：<span>2021-08-04 00:10:10</span></span>
-        
-        <span class="attr">标签：/
-        
-        <a class="tag" href="/tags/#go" title="go">go</a>
-        <span>/</span>
-        
-        
-        </span>
-        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
-</span>
-</span>
-    </div>
-    <div class="post-content no-indent">
-        <p>关于 go 两个数值交换，第一个想到的应该是使用指针的方式</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    a,b:=<span class="number">3</span>,<span class="number">4</span></span><br><span class="line">    swap(&amp;a,&amp;b)</span><br><span class="line">    fmt.Println(a,b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap</span><span class="params">(a,b *<span class="type">int</span>)</span></span>&#123;</span><br><span class="line">    *a,*b = *b,*a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>也可以借助中间变量来作交换</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    a,b:=<span class="number">3</span>,<span class="number">4</span></span><br><span class="line">    swap(&amp;a,&amp;b)</span><br><span class="line">    fmt.Println(a,b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap</span><span class="params">(a,b *<span class="type">int</span>)</span></span>&#123;</span><br><span class="line">    tmp := *a</span><br><span class="line">	*a = *b</span><br><span class="line">	*b = tmp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>还有一种方式，可以不用到指针也能交换；不过这里要注意一下需要有返回值，和需要取接受返回值</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a, b := <span class="number">3</span>, <span class="number">4</span></span><br><span class="line">	swap(a, b)</span><br><span class="line">	fmt.Println(a, b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap</span><span class="params">(a, b <span class="type">int</span>)</span></span> (<span class="type">int</span>, <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> b, a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-        <br />
-        <div id="comment-container">
-        </div>
-        <div id="disqus_thread"></div>
-        <div id="lv-container"></div>
-        <div class="giscus"></div>
-    </div>
+  <div id="comment-container"></div>
+  <div id="disqus_thread"></div>
+  <div class="giscus"></div>
+  <div id="lv-container"></div>
 </div>
 
     </div>
@@ -210,7 +184,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = true
+    window.isPost = false
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 

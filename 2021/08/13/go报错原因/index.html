@@ -1,118 +1,241 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans">
+<html lang=zh-CN>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>go报错原因 | 半斤</title>
-  
-    <link rel="icon" href="/assets/github.svg">
-  
-  
-  
-  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
-  
-<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="hxf的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="hxf的博客">
+    <meta name="keyword"  content="hexo,hxf,hxf的博客,全栈开发,Aircloud">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-  
-<link rel="stylesheet" href="/css/style.css">
+    <title>
+        
+        go报错原因 - hxf 日常
+        
+    </title>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+         
+<!-- script for busuanzi counter -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="hxf 日常" type="application/atom+xml">
+</head>
 
 <body>
-<div class="Shell">
-    <aside class='SideBar'>
-    <section class='avatar' style="background-image: url(/assets/header.png)">
-        <div class='av-pic' style="background-image: url(/assets/tree_small.png)">
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Stay hungry, stay foolish. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
         </div>
-    </section>
-    <section class='menu'>
-        <div>半斤</div>
-        
+        <div class="name">
+            <i>hangxingfu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
         <ul>
-          
-            <a href="/" class="Btn">
-              <li>Home</li>
-            </a>  
-          
-            <a href="/archives/" class="Btn">
-              <li>Archive</li>
-            </a>  
-          
-            <a href="/tags/" class="Btn">
-              <li>Tags</li>
-            </a>  
-          
-            <a href="/about/" class="Btn">
-              <li>About</li>
-            </a>  
-          
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
         </ul>
-    </section>
-    <section class="media">
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#go-%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0"><span class="toc-text">go 报错原因</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Stay hungry, stay foolish. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
         
-    </section>
-</aside>
 
-    <div class="container">
-        <div data-pager-shell>
-            <div>
-  <article class='ContentView'>
-    <header class='PageTitle'>
-        <h1><b>go报错原因</b></h1>
-    </header>
 
-    <section>
-      <h2 id="go报错原因"><a href="#go报错原因" class="headerlink" title="go报错原因"></a>go报错原因</h2><ul>
-<li><p><code>no result values expected</code><br>  函数没有写返回值，却进行了return</p>
+<div class="post-container">
+    <div class="post-title">
+        go报错原因
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-08-13 16:26:51</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#go" title="go">go</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h2 id="go-报错原因"><a href="#go-报错原因" class="headerlink" title="go 报错原因"></a>go 报错原因</h2><ul>
+<li><p><code>no result values expected</code><br>函数没有写返回值，却进行了 return</p>
 </li>
-<li><p><code>undeclared name: xx</code><br>  为定义的变量名，注意定义时的 : 有没有写</p>
+<li><p><code>undeclared name: xx</code><br>为定义的变量名，注意定义时的 : 有没有写</p>
 </li>
 </ul>
 
-
-      
-
-    </section>
-    
-      <section class='ArticleMeta'>
-          <div>
-            发布于&nbsp;
-            <time datetime="2021-08-13T08:26:51.000Z" itemprop="datePublished">
-              2021-08-13
-            </time>
-          </div>
-          
-      </section>
-    
-    
-</article>
-
-  
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
 </div>
 
-            <footer>
-    <div>© 2021 - 八两 </div>
-    <div>
-        <span>
-            Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
-        </span>
-        ,
-        <span>
-            Theme - <a target="_blank" rel="noopener" href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
-        </span>
     </div>
+</div>
+
+<footer class="footer">
+  <ul class="list-inline text-center">
+         
+  </ul>
+  
+  <p>
+    <!-- <span id="busuanzi_container_site_pv">
+      <span id="busuanzi_value_site_pv"></span>PV
+    </span>
+    <span id="busuanzi_container_site_uv">
+      <span id="busuanzi_value_site_uv"></span>UV
+    </span> -->
+
+    Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> Theme
+    <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a>
+  </p>
+  <p>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次 本站访客数<span
+      id="busuanzi_value_site_uv"
+    ></span
+    >人
+  </p>
 </footer>
 
-        </div>
-    </div>
-</div>
 
-<script src="/js/pager/singlepager.js"></script>
+</body>
 
 <script>
-var sp = new Pager('data-pager-shell')
-
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
 </script>
-</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://giscus.app/client.js"
+        data-repo="hangxingfu/hangxingfu.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzODAyNzcxNzU="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOFqqRt84CU8RB"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
 </html>
