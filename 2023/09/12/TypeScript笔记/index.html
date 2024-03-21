@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="hxf的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="hxf的博客">
+    <meta name="keyword"  content="hexo,hxf,hxf的博客,全栈开发,Aircloud">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        TypeScript笔记 - hxf 日常
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+         
+<!-- script for busuanzi counter -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="hxf 日常" type="application/atom+xml">
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Stay hungry, stay foolish. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>hangxingfu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#TS%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">TS的类型</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Stay hungry, stay foolish. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        TypeScript笔记
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2023-09-12 18:25:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#笔记" title="笔记">笔记</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h3 id="TS的类型"><a href="#TS的类型" class="headerlink" title="TS的类型"></a>TS的类型</h3><p><strong>类型声明</strong><br><strong>类型推断</strong>，类型声明并不是必需的，如果没有，TypeScript 会自己推断类型。TypeScript 也可以推断函数的返回值。</p>
+<p><strong>TS的编译</strong>，官方只有编译器，没有运行环境。编译时检查类型，编译为JS后就不会检查类型了。编译器 tsc ，编译的配置项可以写成配置文件 tsconfig.json。</p>
+<p><strong>值与类型</strong>，“类型”是针对“值”的，可以视为是后者的一个元属性。每一个值在 TypeScript 里面都是有类型的。比如，<code>3</code>是一个值，它的类型是<code>number</code>。TypeScript 项目里面，其实存在两种代码，一种是底层的“值代码”，另一种是上层的“类型代码”。前者使用 JavaScript 语法，后者使用 TypeScript 的类型语法。</p>
+<ol>
+<li><p>any类型</p>
+<ul>
+<li>类型推断无法推断出具体类型则为any类型；所以对于那些类型不明显的变量，一定要显式声明类型，防止被推断为<code>any</code>。</li>
+<li>TypeScript 提供了一个编译选项<code>noImplicitAny</code>，打开该选项，只要推断出<code>any</code>类型就会报错。但是在使用let和var声明的变量不赋值的话，编译是不会报错的，所以在使用这两个声明关键词时最好自行声明好类型。</li>
+<li>any类型的变量在被赋值给别的变量时，因为关闭了类型检查，所以会污染别的变量，导致错误。</li>
+</ul>
+</li>
+<li><p>unknow类型</p>
+<ul>
+<li><p>与any类型相似，被称为严格版的any。</p>
+</li>
+<li><p><code>unknown</code>类型跟<code>any</code>类型的不同之处在于，它不能直接使用。主要有以下几个限制。</p>
+<ul>
+<li><p><code>unknown</code>类型的变量，不能直接赋值给其他类型的变量（除了<code>any</code>类型和<code>unknown</code>类型）。如果强行赋值给其他类型变量会报错，避免了污染问题。</p>
+</li>
+<li><p>不能直接调用<code>unknown</code>类型变量的方法和属性。</p>
+</li>
+<li><p><code>unknown</code>类型变量能够进行的运算是有限的，只能进行比较运算（运算符<code>==</code>、<code>===</code>、<code>!=</code>、<code>!==</code>、<code>||</code>、<code>&amp;&amp;</code>、<code>?</code>）、取反运算（运算符<code>!</code>）、<code>typeof</code>运算符和<code>instanceof</code>运算符这几种，其他运算都会报错。</p>
+</li>
+<li><p>unknow使用方式</p>
+<ul>
+<li><p>经过“类型缩小”，<code>unknown</code>类型变量才可以使用。所谓“类型缩小”，就是缩小<code>unknown</code>变量的类型范围，确保不会出错。</p>
+</li>
+<li><pre><code class="ts">let a:unknown = 1;
+
+if (typeof a === &#39;number&#39;) &#123;
+  let r = a + 10; // 正确
+&#125;
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```<span class="language-javascript">ts</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">let</span> <span class="attr">s</span>:unknown = <span class="string">&#x27;hello&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">if</span> (<span class="keyword">typeof</span> s === <span class="string">&#x27;string&#x27;</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">  s.<span class="property">length</span>; <span class="comment">// 正确</span></span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>这样设计的目的是，只有明确<code>unknown</code>变量的实际类型，才允许使用它，防止像<code>any</code>那样可以随意乱用，“污染”其他变量。类型缩小以后再使用，就不会报错。一般来说，凡是需要设为<code>any</code>类型的地方，通常都应该优先考虑设为<code>unknown</code>类型。</p>
+</li>
+<li><p>在集合论上，<code>unknown</code>也可以视为所有其他类型（除了<code>any</code>）的全集，所以它和<code>any</code>一样，也属于 TypeScript 的顶层类型。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>never类型</p>
+<ul>
+<li><p>“空类型”，即该类型为空，不包含任何值。</p>
+</li>
+<li><p><code>never</code>类型的一个重要特点是，可以赋值给任意其他类型。</p>
+<ul>
+<li><pre><code class="ts">function f():never &#123;
+  throw new Error(&#39;Error&#39;);
+&#125;
+
+let v1:number = f(); // 不报错
+let v2:string = f(); // 不报错
+let v3:boolean = f(); // 不报错	
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>为什么<code>never</code>类型可以赋值给任意其他类型呢？这也跟集合论有关，空集是任何集合的子集。TypeScript 就相应规定，任何类型都包含了<code>never</code>类型。因此，<code>never</code>类型是任何其他类型所共有的，TypeScript 把这种情况称为“底层类型”（bottom type）。</p>
+</li>
+<li><p>TypeScript 有两个“顶层类型”（<code>any</code>和<code>unknown</code>），但是“底层类型”只有<code>never</code>唯一一个。</p>
+</li>
+</ul>
+</li>
+</ol>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<footer class="footer">
+  <ul class="list-inline text-center">
+         
+  </ul>
+  
+  <p>
+    <!-- <span id="busuanzi_container_site_pv">
+      <span id="busuanzi_value_site_pv"></span>PV
+    </span>
+    <span id="busuanzi_container_site_uv">
+      <span id="busuanzi_value_site_uv"></span>UV
+    </span> -->
+
+    Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> Theme
+    <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a>
+  </p>
+  <p>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次 本站访客数<span
+      id="busuanzi_value_site_uv"
+    ></span
+    >人
+  </p>
+</footer>
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://giscus.app/client.js"
+        data-repo="hangxingfu/hangxingfu.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzODAyNzcxNzU="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOFqqRt84CU8RB"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+</html>
