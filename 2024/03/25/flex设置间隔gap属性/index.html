@@ -12,7 +12,7 @@
 
     <title>
         
-        hxf 日常
+        flex设置间隔gap属性 - hxf 日常
         
     </title>
 
@@ -65,7 +65,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -106,6 +106,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#flex%E5%B8%83%E5%B1%80%E8%AE%BE%E7%BD%AE%E9%97%B4%E9%9A%94%E5%B1%9E%E6%80%A7"><span class="toc-text">flex布局设置间隔属性</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -131,97 +135,47 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 720px">
-    
-    <div class="post-preview">
-        <div class="post-time">2021-07-26</div>
-        <div class="post-info">
-            <a href="https://hangxingfu.github.io/2021/07/26/go%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
-                <h3>
-                    go依赖管理工具
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#go" title="go">go</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        flex设置间隔gap属性
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2021-07-25</div>
-        <div class="post-info">
-            <a href="https://hangxingfu.github.io/2021/07/25/go-mod%E5%BC%95%E5%85%A5%E5%8C%85/">
-                <h3>
-                    go-mod引入包
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#go" title="go">go</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2024-03-25 10:45:10</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#flex" title="flex">flex</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#css" title="css">css</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2021-07-01</div>
-        <div class="post-info">
-            <a href="https://hangxingfu.github.io/2021/07/01/go-study/">
-                <h3>
-                    go环境搭建（Mac）
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#go" title="go">go</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content no-indent">
+        <h3 id="flex布局设置间隔属性"><a href="#flex布局设置间隔属性" class="headerlink" title="flex布局设置间隔属性"></a>flex布局设置间隔属性</h3><p>可以用<code>gap</code>来做flex布局时的间隔设置。横向和纵向之间都可以。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: flex;</span><br><span class="line"><span class="attribute">flex-direction</span>: row;</span><br><span class="line"><span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line"><span class="attribute">gap</span>: <span class="number">40px</span> <span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
+
+<p>但是，有的浏览器不支持<code>gap</code>属性，需要做兼容。</p>
+<p>用<code>margin</code>属性，将右边和下边的属性设置好。用scss的方法把它封装起来，用的时候就引入就可以了。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> gap(<span class="variable">$size</span>) &#123;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: <span class="built_in">calc</span>(<span class="number">0px</span> - <span class="variable">$size</span>);</span><br><span class="line">	<span class="attribute">margin-right</span>: <span class="built_in">calc</span>(<span class="number">0px</span> - <span class="variable">$size</span>);</span><br><span class="line">	&amp; &gt; * &#123;</span><br><span class="line">		<span class="attribute">margin-right</span>: <span class="variable">$size</span>;</span><br><span class="line">		<span class="attribute">margin-bottom</span>: <span class="variable">$size</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2021-06-26</div>
-        <div class="post-info">
-            <a href="https://hangxingfu.github.io/2021/06/26/brew%E5%AE%89%E8%A3%85PHP%E7%8E%AF%E5%A2%83/">
-                <h3>
-                    brew 安装 PHP 环境
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#PHP" title="PHP">PHP</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/">&larr; Newer Posts</a>
-    </li>
-    
-    
-</ul>
 
     </div>
 </div>
@@ -257,7 +211,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
@@ -266,6 +220,23 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+    <script src="https://giscus.app/client.js"
+        data-repo="hangxingfu/hangxingfu.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzODAyNzcxNzU="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOFqqRt84CU8RB"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
 
 
 

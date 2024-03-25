@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="hxf的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="hxf的博客">
+    <meta name="keyword"  content="hexo,hxf,hxf的博客,全栈开发,Aircloud">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Node.js learning - hxf 日常
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+         
+<!-- script for busuanzi counter -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="hxf 日常" type="application/atom+xml">
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Stay hungry, stay foolish. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>hangxingfu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#cjs-mjs"><span class="toc-text">cjs mjs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#node-js%E4%B8%AD%E7%9A%84%E6%89%93%E5%8D%B0"><span class="toc-text">node.js中的打印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filename-dirname"><span class="toc-text">__filename  __dirname</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#child-process%E6%A8%A1%E5%9D%97"><span class="toc-text">child_process模块</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Stay hungry, stay foolish. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Node.js learning
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2024-03-21 16:10:24</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Node.js" title="Node.js">Node.js</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h3 id="cjs-mjs"><a href="#cjs-mjs" class="headerlink" title="cjs mjs"></a>cjs mjs</h3><p>cjs 和 mjs 是两种规范，目前主流使用mjs.</p>
+<p>mjs规范的两种方式：</p>
+<ol>
+<li>package.json文件里配置“type: module”</li>
+<li>js文件后缀名为“mjs”</li>
+</ol>
+<h3 id="node-js中的打印"><a href="#node-js中的打印" class="headerlink" title="node.js中的打印"></a>node.js中的打印</h3><p>打印都在终端，而vue等前端项目的打印在浏览器的控制台，要区分开哪里的打印在哪个端。</p>
+<p>包：<code>javascript-stringify</code> , 在打印时可以几乎没有隐藏的将函数和对象全都打印。</p>
+<h3 id="filename-dirname"><a href="#filename-dirname" class="headerlink" title="__filename  __dirname"></a><code>__filename</code> <code> __dirname</code></h3><p>在mjs中，无法使用cjs中的一些变量。比如 <code>__filename</code>  <code>__dirname</code> 。</p>
+<p>如果要使用这两个变量，可以用 <code>import.meta.url</code> 的方式迂回使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; fileURLToPath &#125; <span class="keyword">from</span> <span class="string">&#x27;url&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> __filename = <span class="title function_">fileURLToPath</span>(<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>);</span><br><span class="line"><span class="keyword">const</span> __dirname = path.<span class="title function_">dirname</span>(__filename);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fileName = path.<span class="title function_">resolve</span>(__dirname, process.<span class="property">argv</span>[<span class="number">2</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fileName:&#x27;</span>, fileName);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="child-process模块"><a href="#child-process模块" class="headerlink" title="child_process模块"></a>child_process模块</h3><ul>
+<li>开启一个子进程，去做别的事情</li>
+<li><code>const &#123; spawn, spawnSync &#125; = Chileprocess</code><ul>
+<li>spawn是用来执行一个命令行的任务</li>
+<li><code>const &#123; stdout, stderr &#125; = spawnSync(&#39;git&#39;, [&#39;log&#39;, &#39;-1&#39;, &#39;--pretty=&quot;%ci&quot;&#39;, fileName])</code><ul>
+<li>查看git里面某个文件的最近的一次修改的时间。</li>
+<li><code>toString()</code> 方法可以指定编码的格式。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>类似spawn的<code>exec, execSync</code></li>
+<li>执行文件的 <code>execFile, execFileSync</code></li>
+<li>开启一个子进程并与之通信 <code>fork</code></li>
+</ul>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<footer class="footer">
+  <ul class="list-inline text-center">
+         
+  </ul>
+  
+  <p>
+    <!-- <span id="busuanzi_container_site_pv">
+      <span id="busuanzi_value_site_pv"></span>PV
+    </span>
+    <span id="busuanzi_container_site_uv">
+      <span id="busuanzi_value_site_uv"></span>UV
+    </span> -->
+
+    Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> Theme
+    <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a>
+  </p>
+  <p>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次 本站访客数<span
+      id="busuanzi_value_site_uv"
+    ></span
+    >人
+  </p>
+</footer>
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://giscus.app/client.js"
+        data-repo="hangxingfu/hangxingfu.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkzODAyNzcxNzU="
+        data-category="Announcements"
+        data-category-id="DIC_kwDOFqqRt84CU8RB"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+</html>

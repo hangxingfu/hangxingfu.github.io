@@ -6,7 +6,7 @@
   <link href="https://hangxingfu.github.io/atom.xml" rel="self"/>
   
   <link href="https://hangxingfu.github.io/"/>
-  <updated>2024-03-21T08:01:22.640Z</updated>
+  <updated>2024-03-25T02:58:12.657Z</updated>
   <id>https://hangxingfu.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>flex设置间隔gap属性</title>
+    <link href="https://hangxingfu.github.io/2024/03/25/flex%E8%AE%BE%E7%BD%AE%E9%97%B4%E9%9A%94gap%E5%B1%9E%E6%80%A7/"/>
+    <id>https://hangxingfu.github.io/2024/03/25/flex%E8%AE%BE%E7%BD%AE%E9%97%B4%E9%9A%94gap%E5%B1%9E%E6%80%A7/</id>
+    <published>2024-03-25T02:45:10.000Z</published>
+    <updated>2024-03-25T02:58:12.657Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="flex布局设置间隔属性"><a href="#flex布局设置间隔属性" class="headerlink" title="flex布局设置间隔属性"></a>flex布局设置间隔属性</h3><p>可以用<code>gap</code>来做flex布局时的间隔设置。横向和纵向之间都可以。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: flex;</span><br><span class="line"><span class="attribute">flex-direction</span>: row;</span><br><span class="line"><span class="attribute">flex-wrap</span>: wrap;</span><br><span class="line"><span class="attribute">gap</span>: <span class="number">40px</span> <span class="number">20px</span>;</span><br></pre></td></tr></table></figure><p>但是，有的浏览器不支持<code>gap</code>属性，需要做兼容。</p><p>用<code>margin</code>属性，将右边和下边的属性设置好。用scss的方法把它封装起来，用的时候就引入就可以了。</p><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> gap(<span class="variable">$size</span>) &#123;</span><br><span class="line"><span class="attribute">margin-bottom</span>: <span class="built_in">calc</span>(<span class="number">0px</span> - <span class="variable">$size</span>);</span><br><span class="line"><span class="attribute">margin-right</span>: <span class="built_in">calc</span>(<span class="number">0px</span> - <span class="variable">$size</span>);</span><br><span class="line">&amp; &gt; * &#123;</span><br><span class="line"><span class="attribute">margin-right</span>: <span class="variable">$size</span>;</span><br><span class="line"><span class="attribute">margin-bottom</span>: <span class="variable">$size</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;flex布局设置间隔属性&quot;&gt;&lt;a href=&quot;#flex布局设置间隔属性&quot; class=&quot;headerlink&quot; title=&quot;flex布局设置间隔属性&quot;&gt;&lt;/a&gt;flex布局设置间隔属性&lt;/h3&gt;&lt;p&gt;可以用&lt;code&gt;gap&lt;/code&gt;来做flex布局时的间</summary>
+      
+    
+    
+    
+    
+    <category term="flex" scheme="https://hangxingfu.github.io/tags/flex/"/>
+    
+    <category term="css" scheme="https://hangxingfu.github.io/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js learning</title>
+    <link href="https://hangxingfu.github.io/2024/03/21/Node-js-learning/"/>
+    <id>https://hangxingfu.github.io/2024/03/21/Node-js-learning/</id>
+    <published>2024-03-21T08:10:24.000Z</published>
+    <updated>2024-03-22T02:52:00.885Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="cjs-mjs"><a href="#cjs-mjs" class="headerlink" title="cjs mjs"></a>cjs mjs</h3><p>cjs 和 mjs 是两种规范，目前主流使用mjs.</p><p>mjs规范的两种方式：</p><ol><li>package.json文件里配置“type: module”</li><li>js文件后缀名为“mjs”</li></ol><h3 id="node-js中的打印"><a href="#node-js中的打印" class="headerlink" title="node.js中的打印"></a>node.js中的打印</h3><p>打印都在终端，而vue等前端项目的打印在浏览器的控制台，要区分开哪里的打印在哪个端。</p><p>包：<code>javascript-stringify</code> , 在打印时可以几乎没有隐藏的将函数和对象全都打印。</p><h3 id="filename-dirname"><a href="#filename-dirname" class="headerlink" title="__filename  __dirname"></a><code>__filename</code> <code> __dirname</code></h3><p>在mjs中，无法使用cjs中的一些变量。比如 <code>__filename</code>  <code>__dirname</code> 。</p><p>如果要使用这两个变量，可以用 <code>import.meta.url</code> 的方式迂回使用</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; fileURLToPath &#125; <span class="keyword">from</span> <span class="string">&#x27;url&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> __filename = <span class="title function_">fileURLToPath</span>(<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>);</span><br><span class="line"><span class="keyword">const</span> __dirname = path.<span class="title function_">dirname</span>(__filename);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fileName = path.<span class="title function_">resolve</span>(__dirname, process.<span class="property">argv</span>[<span class="number">2</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fileName:&#x27;</span>, fileName);</span><br></pre></td></tr></table></figure><h3 id="child-process模块"><a href="#child-process模块" class="headerlink" title="child_process模块"></a>child_process模块</h3><ul><li>开启一个子进程，去做别的事情</li><li><code>const &#123; spawn, spawnSync &#125; = Chileprocess</code><ul><li>spawn是用来执行一个命令行的任务</li><li><code>const &#123; stdout, stderr &#125; = spawnSync(&#39;git&#39;, [&#39;log&#39;, &#39;-1&#39;, &#39;--pretty=&quot;%ci&quot;&#39;, fileName])</code><ul><li>查看git里面某个文件的最近的一次修改的时间。</li><li><code>toString()</code> 方法可以指定编码的格式。</li></ul></li></ul></li><li>类似spawn的<code>exec, execSync</code></li><li>执行文件的 <code>execFile, execFileSync</code></li><li>开启一个子进程并与之通信 <code>fork</code></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;cjs-mjs&quot;&gt;&lt;a href=&quot;#cjs-mjs&quot; class=&quot;headerlink&quot; title=&quot;cjs mjs&quot;&gt;&lt;/a&gt;cjs mjs&lt;/h3&gt;&lt;p&gt;cjs 和 mjs 是两种规范，目前主流使用mjs.&lt;/p&gt;
+&lt;p&gt;mjs规范的两种方式：&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="Node.js" scheme="https://hangxingfu.github.io/tags/Node-js/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS文本行</title>
